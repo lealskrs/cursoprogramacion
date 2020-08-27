@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+   body {
+       margin: 0;
+       padding: 0;
+       background-image:url("fondologin.png") ;
+       background-repeat: no-repeat;
+       background-position: center;
+       background-position: top;
+       background-size: cover;
+       font-family: sans-serif;
+       height: 100vh;
+   }
+  .login-box {
+      width: 320px;
+      height: 420px;
+      background:black;
+      color:white;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50% , -50%);
+      box-sizing: border-box;
+      padding: 70px 30px;
+  }
+  .log {
+      width: 100px;
+      right: 100px;
+      border: 50%;
+      position: absolute;
+      top:  -60px;
+      left: calc(50%-50px)
+
+
+  }
+  .login-box h1 {
+      margin: 0;
+      padding: 0 0 20;
+      text-align: center;
+      font-size: 22px;
+
+
+
+  }
+  .login-box label {
+     font-weight: bold;
+
+ }
+
+ .login-box input{
+     width: 100%;
+     margin-bottom: 20px;
+     border: none;
+     border-bottom: 1px solid #fff;
+     
+ }
+ .login-box input[type="text"],
+ .login-box input[type="password"]{
+     border:none;
+     border-bottom: 1px solid #fff;
+     background:transparent;
+     outline: none;
+     height: 40px;
+     color:rgb(66, 139, 161);
+     font-size: 16px;
+
+
+ }
+ .login-box input[type="submit"]{
+     border-radius: 20px;
+     height: 40px;
+     background:rgb(66, 139, 161);
+     outline: none;
+     border:none;
+     font-size:18px;
+     color:white
+ }
+
+ .login-box a{
+     text-decoration: none;
+     font-size: 17px;
+     line-height: 20px;
+     color:rgb(66, 139, 161);
+     
+    
+ }
+
+
+.login-box :hover a{
+    color:floralwhite
+}
+
+ 
+  </style>
+   
+   
+
+
+   
+</head>
+
+<body>
+    <div class= "login-box">
+        <img class="log" src="Logo.png">
+        <h1>Iniciar Sesion</h1>
+        <form>
+            
+            <!--nombre de usuario-->
+            <label for="Usuario">Usuario</label>
+            <input type="text" placeholder="Enter Usuario">
+        
+              <!--Password-->
+              <label for="Password">Password</label>
+              <input type="password" placeholder="Enter Password">
+            
+
+              
+
+              <input type="submit" value="Iniciar Sesion">
+ 
+              <a href="#">Olvidaste tu contraseña?</a> <br><br>
+              
+              <a href="##">Crear Cuenta</a>
+              
+
+         
+   
+
+
+        </form>
+
+    </div>
+
+
+</body>
+
+</html>
