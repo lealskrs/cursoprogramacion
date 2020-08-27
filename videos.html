@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Elastic Beanstalk</title>
     <style>
-      body {
+        header body {
         color: #ffffff;
         font-family: Arial, sans-serif;
         font-size:14px;
@@ -11,51 +12,44 @@
         -moz-transition-duration: 4s;
         -webkit-transition-property: text-shadow;
         -webkit-transition-duration: 4s;
-        text-shadow: none;
-      }
-      body.blurry {
-        -moz-transition-property: text-shadow;
-        -moz-transition-duration: 4s;
-        -webkit-transition-property: text-shadow;
-        -webkit-transition-duration: 4s;
-        text-shadow: #fff 0px 0px 25px;
-      }
-      a {
-        color: #55aaff;
-      }
-      .textColumn, .linksColumn {
-        padding: 2em;
+       text-shadow: none;
+        }
+        body {
+          margin: 0px;
+        }
+
+
+        .textColumn, .linksColumn {
+        padding: 1em;
       }
       .textColumn {
         position: absolute;
-        top: 0px;
+        top: 100px;
         right: 50%;
         bottom: 0px;
         left: 0px;
-
-        text-align: right;
-        padding-top: 11em;
-        background-color: #73A53E;
+        background-color: #6c72b9;
 
       }
       .textColumn p {
         width: 75%;
-        float:right;
+        float:center;
+        font-size:100%;
+
       }
       .linksColumn {
         position: absolute;
-        top:0px;
+        top:100px;
         right: 0px;
         bottom: 0px;
         left: 50%;
 
         background-color: #33342D;
       }
-
       h1 {
         color: #33342D;
-        font-size: 500%;
-        font-weight: normal;
+        font-size: 300%;
+        font-weight: center;
         margin-bottom: 0em;
       }
       h2 {
@@ -63,29 +57,154 @@
         font-weight: normal;
         margin-bottom: 0em;
       }
-      ul {
-        padding-left: 1em;
+
+      
+      header img {
+        width: 115px;
+        margin-left: 100px;
+      }
+      header ul {
         margin: 0px;
       }
-      li {
-        margin: 1em 0em;
+      header li {
+        float: left;
+        list-style: none;
+        padding: 20px;
+        margin-right: 100px;
+        font-family: sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
       }
+      header nav {
+        float: right;
+      } 
+      header li:hover a {
+        color:rgb(194, 166, 201) ;
+      }
+
+    
+      header a {
+        text-decoration: none ;
+        color: white;
+      }
+      header {
+        height: 50px; 
+        background-size: cover;
+        padding: 10px;
+        background-color: #242529;
+      }
+
+      html {
+        font-family: sans-serif;
+      }
+      footer {
+        background-color: #242529;
+        width: 100%;
+        height: 63px;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        padding: 5px;
+      }
+      footer table {
+        width: 100%;
+        color: white;
+        text-transform: uppercase;
+      }
+      footer a {
+        font-size: 12px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+      }
+      footer ul {
+        margin: 0px;
+        list-style-type: none;
+      }
+      footer td {
+        min-width: 100px;
+        font-size: 16px;
+      }
+      footer li:hover a {
+        color:rgb(194, 166, 201) ;
+      }
+
+      
     </style>
   </head>
   <body>
-    <div class="textColumn">
-      <h1>Videos</h1>
-      <p>En esta seccion se muestran todos los viceos de las clases</p>
-    </div>
-    <div class="linksColumn">
-      <ul>
-        <li>
-          <iframe src="https://drive.google.com/file/d/1QMEcPpbLZTlv2VCx_aH5plJtadbNEd15/preview" width="320" height="240"></iframe>
-        </li>
-        <li>
-          <iframe src="https://drive.google.com/file/d/1FEsC9K7UCsXxEeLJ9aBg_F_br8FrZWXh/preview" width="320" height="240"></iframe>
-        </li>
-      </ul>
-    </div>
+
+    <header>
+      <img src="Logo.png">
+      <nav>
+        <ul>
+          <li><a href="/videos.html">Videos</a> </li>
+          <li><a href="">Juegos</a> </li>
+          <li><a href="">Codigo</a></li>
+          <li><a href="">Contactenos</a></li>
+          
+        </ul>
+      </nav>
+    
+    </header>
+    
+ </div>
+
+ <div class="textColumn">
+  <h1>Videos</h1>
+  <p><b> esta seccion se muestran todos los viceos de las clases </p></b>
+  <iframe src="https://drive.google.com/file/d/1QMEcPpbLZTlv2VCx_aH5plJtadbNEd15/preview" width="580" height="340"></iframe>
+</div>
+<div class="linksColumn">
+  <ul>
+    <li>
+      <iframe src="https://drive.google.com/file/d/1QMEcPpbLZTlv2VCx_aH5plJtadbNEd15/preview" width="180" height="90"></iframe><br><br>
+    </li>
+    <li>
+      <iframe src="https://drive.google.com/file/d/1FEsC9K7UCsXxEeLJ9aBg_F_br8FrZWXh/preview" width="180" height="90"></iframe><br><br>
+    </li>
+    <li>
+      <iframe src="https://drive.google.com/file/d/1FEsC9K7UCsXxEeLJ9aBg_F_br8FrZWXh/preview" width="180" height="90"></iframe><br><br>
+    </li>
+    <li>
+      <iframe src="https://drive.google.com/file/d/1QMEcPpbLZTlv2VCx_aH5plJtadbNEd15/preview" width="180" height="90"></iframe>
+    </li>
+  </ul>
+</div>
+
+
+
+    <footer>
+      <table>
+        <tr>
+          <td></td>
+          <td>
+            2020 cursoprogramacion.com
+          </td>
+          <td>
+            <ul>
+              <li><a href="">Ejercicios</a></li>
+              <li><a href="/videos.html">Videos</a></li>
+              <li><a href="">Codigo</a></li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li><a href="">Paginas</a></li>
+              <li><a href="">Juegos</a></li>
+              <li><a href="">Contacto</a></li>
+            </ul>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+      
+
+         
+        
+      
+      
+    </footer>
+   
   </body>
 </html>
