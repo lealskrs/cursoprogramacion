@@ -4,11 +4,15 @@
   <head>
    
     <title>Formulario de contacto</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://kit.fontawesome.com/0577fe47dc.js" crossorigin="anonymous"></script>
 
 
 
     <style>
+      span.fas {
+        color: white;
+        width: 9%;
+      }
       body{
         background-image: url(fondologin.png);
         background-size: 100vw 100vh;
@@ -41,7 +45,7 @@
 
       input,textarea{
       
-        width: 100%;
+        width: 90%;
         margin-bottom: 20px;
         box-sizing: border-box;
         font-size: 17px;
@@ -50,7 +54,6 @@
         background:transparent;
         border-bottom: 1px solid rgb(66,139,161);
         color:rgb(66, 139, 161); 
-        border-bottom: 1px s
         outline: none;
         
      
@@ -62,6 +65,7 @@
         min-height: 100px;
         max-height: 200px;
         max-width: 100%;
+        margin-left: 10%;
       }
       #boton{
         background-color: rgb(66,139,161);
@@ -75,9 +79,10 @@
         cursor: pointer;
       }
     
-      @media (max-width: 480px) {
+    
+      @media screen and (max-width: 992px) {
         form{
-          width: 100%;
+          width: 85%;
         }
       }
     
@@ -97,14 +102,13 @@
     <h2> <span class= "icon-person"></span> Contacto</h2>
  
        
-    <input   type="text" name="Nombre" placeholder="Nombre">
+    <span class="fas fa-user"></span> <input   type="text" name="Nombre" placeholder="Nombre">
 
 
-        <input type="text" name="Correo" placeholder="Correo">
-        >
+    <span class="fas fa-envelope"></span> <input type="text" name="Correo" placeholder="Correo">
 
        
-        <input type="number" name="Telefono" placeholder="Telefono">
+    <span class="fas fa-phone"></span> <input type="number" name="Telefono" placeholder="Telefono">
 
         <textarea name="Mensaje" placeholder="Escriba aqui su mensaje"></textarea>
 
