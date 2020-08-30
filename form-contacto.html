@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+   
+    <title>Formulario de contacto</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+    <style>
+      body{
+        background-image: url(fondologin.png);
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+        margin: 0;
+        
+      }
+
+      form{
+        width: 450px;
+        margin: auto;
+        background-color: black;
+        padding: 20px 30px;
+        box-sizing: border-box;
+        margin-top: 100px;
+        border-radius: 7px;
+      }
+      h2{
+        color:whitesmoke;
+        text-align: center;
+        margin: 0;
+        font-size: 30px;
+        margin-bottom: 20px;
+        font-family: serif;
+      }
+
+     
+       
+      
+
+      input,textarea{
+      
+        width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        font-size: 17px;
+        font-family: serif;
+        border: none;
+        background:transparent;
+        border-bottom: 1px solid rgb(66,139,161);
+        color:rgb(66, 139, 161); 
+        border-bottom: 1px s
+        outline: none;
+        
+     
+     
+     
+      }
+
+      textarea{
+        min-height: 100px;
+        max-height: 200px;
+        max-width: 100%;
+      }
+      #boton{
+        background-color: rgb(66,139,161);
+        color:whitesmoke;
+        padding: 20px;
+        border-radius: 20px; 
+        font-size: 22px;
+        font-family: serif;
+      }
+       :hover #boton  {
+        cursor: pointer;
+      }
+    
+      @media (max-width: 480px) {
+        form{
+          width: 100%;
+        }
+      }
+    
+
+    
+   
+
+     
+
+    </style>
+
+    </head>
+
+    <body>
+      
+      <form action="">
+    <h2> <span class= "icon-person"></span> Contacto</h2>
+ 
+       
+    <input   type="text" name="Nombre" placeholder="Nombre">
+
+
+        <input type="text" name="Correo" placeholder="Correo">
+        >
+
+       
+        <input type="number" name="Telefono" placeholder="Telefono">
+
+        <textarea name="Mensaje" placeholder="Escriba aqui su mensaje"></textarea>
+
+        <input type="button" value="ENVIAR" id="boton">
+
+      </form>
+     
+
+     
+        
+     
+       
+
+      
+
+  
+
+     
+    </body>
+
+    </html>
