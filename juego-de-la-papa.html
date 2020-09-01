@@ -81,24 +81,30 @@
 
                     console.log(prevX, p.x, prevY, p.y);
                     if (p.x != prevX || p.y != prevY) {
-                        prevX = p.x;
-                        prevY = p.y;
                         if (yaEmpezo) {
 
                             // ctx.fillStyle = "blue";
                             // ctx.fillRect(prevX,prevY,escala,escala);
                             var data = ctx.getImageData(p.x, p.y, 1, 1).data;
                             console.log(data);
-                            if(data[2] == 255) {
+                            if(data[2] > 100) {
                                 alert("Perdiste!");
                                 window.location.reload();
                             }
 
                             ctx.fillStyle = "blue";
-                            ctx.fillRect(p.x,p.y,escala,escala);
+                            ctx.beginPath();
+                            ctx.moveTo(prevX, prevY);
+                            ctx.lineTo(p.x, p.y);
+                            ctx.lineWidth = escala;
+                            ctx.strokeStyle = "blue";
+                            ctx.stroke();
+                            //ctx.fillRect(p.x,p.y,escala,escala);
                         } else if (p.x >= pos1X && p.y >= pos1Y && p.x <= pos1X + escala * 2 && p.y <= pos1Y + escala * 2) {
                             yaEmpezo = true;
                         }
+                        prevX = p.x;
+                        prevY = p.y;
                     }
                 }, false);
                 function getMousePos(canvas, evt) {
