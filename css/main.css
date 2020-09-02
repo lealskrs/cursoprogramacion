@@ -1,0 +1,16 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    margin:0;
+    padding: 0;
+}
+main {
+    padding-top: 100px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+    padding-right: 200px;
+}

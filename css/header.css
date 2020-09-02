@@ -1,0 +1,35 @@
+header {
+    align-self: flex-start;
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+    background-color: #242529;
+}
+header img {
+    width: 115px;
+    margin-left: 100px;
+    position: absolute;
+    z-index: 1000;
+}
+header ul {
+    margin: 0px;
+}
+header li {
+    float: left;
+    list-style: none;
+    padding: 20px;
+    margin-right: 50px;
+    font-family: sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+header nav {
+    float: right;
+} 
+header li:hover a {
+    color:rgb(194, 166, 201) ;
+}
+header a {
+    text-decoration: none ;
+    color: white;
+}
