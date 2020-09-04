@@ -37,7 +37,7 @@
      position: absolute;
      transform: translate(-50% , -50%);
      box-sizing: border-box;
-     padding: 70px 30px;
+     padding: 40px 30px;
  }
  .log {
      width: 100px;
@@ -49,7 +49,7 @@
  }
  .login-box h1 {
      margin: 0;
-     padding: 0 0 20;
+     margin-bottom: 30px;
      text-align: center;
      font-size: 22px;
  }
@@ -123,28 +123,24 @@
 
 
     <div class= "login-box">
-        <img class="log" src="Logo.png">
         <h1>Unidades de Temperatura </h1>
-        <form>
+        <div>
             
-            <!--nombre de usuario-->
             <label for="Usuario">Grados Fahrenheit</label>
-            <input type="number" placeholder="Ingrese Fahrenheit">
+            <input onclick="limpiarInputs('f')" id="f" type="number" placeholder="Ingrese Fahrenheit">
         
-              <!--Password-->
-              <label for="Password">Grados Celcius</label>
-              <input type="number" placeholder="Ingrese Celcius">
-            
-              <label for="Password">Grados Kelvin</label>
-              <input type="number" placeholder="Ingrese Kelvin">
+            <label for="Password">Grados Celcius</label>
+            <input onclick="limpiarInputs('c')" id="c" type="number" placeholder="Ingrese Celcius">
+          
+            <label for="Password">Grados Kelvin</label>
+            <input onclick="limpiarInputs('k')" id="k" type="number" placeholder="Ingrese Kelvin">
               
-
-              <input type="submit" value="Calcular">
- 
+        <input type="submit" onclick="calcular()" value="Calcular">
+  
            
 
 
-        </form>
+        </div>
 
     </div>
 
@@ -174,7 +170,36 @@
   </footer>
   <!-- Footer END -->
 
+  <script>
+    var varF;
+    var varC;
+    var varK;
+    var editando;
 
+    function limpiarInputs(input) {
+      editando = input;
+      document.getElementById('f').value='';
+      document.getElementById('c').value='';
+      document.getElementById('k').value='';
+    }
+
+    function calcular() {
+      varF = parseFloat(document.getElementById('f').value);
+      varC = parseFloat(document.getElementById('c').value);
+      varK = parseFloat(document.getElementById('k').value);
+      console.log(varF, varC, varK);
+      if(editando == 'f') {
+        document.getElementById('c').value=(varF - 32) * 5/9;
+        document.getElementById('k').value=(varF - 32) * 5/9 + 273.15;
+      } else if(editando == 'c') {
+        document.getElementById('f').value=(varC * 9/5) + 32;
+        document.getElementById('k').value=varC + 273.15;
+      } if(editando == 'k') {
+        document.getElementById('f').value= (varK - 273.15) * 9/5 + 32;
+        document.getElementById('c').value= varK - 273.15;
+      }
+    }
+  </script>
 
 </body>
 
