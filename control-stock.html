@@ -138,7 +138,9 @@
             padding-right: 15px;
         }
 
-
+        #productos img {
+            width: 200px;
+        }
 
     </style>
 
@@ -163,6 +165,7 @@
             <span>Precio de Compra </span><input onchange="cambioGanancia()" id="inputPrecioCompra" type="number" value="10" /><br>
             <span>Precio de Venta </span><input onchange="cambioPrecio()" id="inputPrecioVenta" type="number" value="15" /><br>
             <span>% de Ganancia: </span><input onchange="cambioGanancia()" id="porcentajeGanancia" type="number" value="50"/><br>
+            <span>Imagen Producto </span><input id="inputImagen" type="text" value="" placeholder="Escriba la url..." /><br>
             <button onclick="agregarProducto()">Agregar Producto</button>
         </div>
 
@@ -197,6 +200,7 @@
             var cantidadProductos = [];
             var precioCompraProductos = [];
             var precioVentaProductos = [];
+            var imagenProductos = [];
 
             function comprarProductos(i) {
                 if (dineroTotal >= precioCompraProductos[i]) {
@@ -240,16 +244,30 @@
                     const cantidad = cantidadProductos[i];
                     const precioCompra = precioCompraProductos[i];
                     const precioVenta = precioVentaProductos[i];
+                    const imagen = imagenProductos[i];
                     
                     document.getElementById("productos").innerHTML += `
                     <div class="clase-producto">
-                        <p>${nombre}</p>
-                        <p>Cant: <span>${cantidad}</span> unidades</p>
-                        <p>Precio Compra: $<span>${precioCompra}</span></p>
-                        <p>Precio Venta: $<span>${precioVenta}</span></p>
-                        <button onclick="comprarProductos(${i})">Comprar ${nombre}</button>
-                        <button onclick="venderProductos(${i})">Vender ${nombre}</button>
-                        <button class="borrar" onclick="eliminarProducto(${i})">X</button>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <img src="${imagen || "https://www.newcasmont.com/11171-medium_default/merclin-quita-graffiti-250ml.jpg"}"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h3>${nombre}</h3>
+                                        <p>Cant: <span>${cantidad}</span> unidades</p>
+                                        <p>Precio Compra: $<span>${precioCompra}</span></p>
+                                        <p>Precio Venta: $<span>${precioVenta}</span></p>
+                                        <button onclick="comprarProductos(${i})">Comprar ${nombre}</button>
+                                        <button onclick="venderProductos(${i})">Vender ${nombre}</button>
+                                        <button class="borrar" onclick="eliminarProducto(${i})">X</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     `;
                 }
@@ -272,11 +290,13 @@
                     const cantidad = parseInt(document.getElementById("inputCantidad").value);
                     const precioCompra = parseInt(document.getElementById("inputPrecioCompra").value)
                     const precioVenta = parseInt(document.getElementById("inputPrecioVenta").value)
+                    const imagen = document.getElementById("inputImagen").value
 
                     nombresProductos.push(nombre);
                     cantidadProductos.push(cantidad);
                     precioCompraProductos.push(precioCompra);
                     precioVentaProductos.push(precioVenta);
+                    imagenProductos.push(imagen);
 
                     dibujarProductos();
                 } else {
@@ -322,6 +342,7 @@
                 localStorage.setItem("precioCompraProductos", JSON.stringify(precioCompraProductos));
                 localStorage.setItem("precioVentaProductos", JSON.stringify(precioVentaProductos));
                 localStorage.setItem("dineroTotal", JSON.stringify(dineroTotal));
+                localStorage.setItem("imagenProductos", JSON.stringify(imagenProductos));
             }
 
             function cargar() {
@@ -329,6 +350,7 @@
                 cantidadProductos = JSON.parse(localStorage.getItem("cantidadProductos")) || [];
                 precioCompraProductos = JSON.parse(localStorage.getItem("precioCompraProductos")) || [];
                 precioVentaProductos = JSON.parse(localStorage.getItem("precioVentaProductos")) || [];
+                imagenProductos = JSON.parse(localStorage.getItem("imagenProductos")) || [];
                 if (localStorage.getItem("dineroTotal")) {
                     dineroTotal = JSON.parse(localStorage.getItem("dineroTotal"));
                 }
