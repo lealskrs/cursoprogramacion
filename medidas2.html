@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Convertidor de Temperaturas</title>
+
+    <style>
+        
+       
+       
+       
+       
+       
+       
+        body {
+      margin: 0;
+      padding: 0;
+      background-image:url("imagenes/fondologin.png") ;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-position: top;
+      background-size: cover;
+      font-family: sans-serif;
+      height: 100vh;
+  }
+ .login-box {
+     width: 320px;
+     height: 420px;
+     background:black;
+     color:white;
+     top: 50%;
+     left: 50%;
+     position: absolute;
+     transform: translate(-50% , -50%);
+     box-sizing: border-box;
+     padding: 40px 30px;
+ }
+ .log {
+     width: 100px;
+     right: 100px;
+     border: 50%;
+     position: absolute;
+     top:  -60px;
+     left: calc(50%-50px)
+ }
+ .login-box h1 {
+     margin: 0;
+     margin-bottom: 30px;
+     text-align: center;
+     font-size: 22px;
+ }
+ .login-box label {
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    
+}
+.login-box input[type="text"],
+.login-box input[type="password"]{
+    border:none;
+    border-bottom: 1px solid #fff;
+    background:transparent;
+    outline: none;
+    height: 40px;
+    color:rgb(66, 139, 161);
+    font-size: 16px;
+}
+.login-box input[type="submit"]{
+    border-radius: 20px;
+    height: 40px;
+    background:rgb(66, 139, 161);
+    outline: none;
+    border:none;
+    font-size:18px;
+    color:white;
+    margin-top: 20px;
+    cursor: pointer;
+  
+}
+.login-box a{
+    text-decoration: none;
+    font-size: 17px;
+    line-height: 20px;
+    color:rgb(66, 139, 161);
+    
+   
+
+}
+ 
+    </style>
+
+</head>
+
+
+<body>
+
+  <!-- Header START -->
+  <header>
+    <img src="imagenes/Logo.png">
+    <nav>
+      <ul>
+        <li><a href="videos.html">Videos</a> </li>
+        <li><a href="juegos.html">Juegos</a> </li>
+        <li><a href="">Codigo</a></li>
+        <li><a href="form-contacto.html">Contactenos</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Header END -->
+
+
+    
+
+
+
+    <div class= "login-box">
+        <h1>Unidades de Longitud </h1>
+        <div>
+            
+            <label for="Usuario">Kilometros</label>
+            <input onclick="limpiarInputs('km')" id="km" type="number" placeholder="Ingrese Kilometros">
+        
+            <label for="Password">Metros</label>
+            <input onclick="limpiarInputs('m')" id="m" type="number" placeholder="Ingrese Metros">
+          
+            <label for="Password">Centimetros</label>
+            <input onclick="limpiarInputs('cm')" id="cm" type="number" placeholder="Ingrese Centimetros">
+           
+            <label for="Password">Milimetros</label>
+            <input onclick="limpiarInputs('mm')" id="mm" type="number" placeholder="Ingrese Milimetros">
+        <input type="submit" onclick="calcular()" value="Calcular">
+  
+           
+
+
+        </div>
+
+    </div>
+
+  <!-- Footer START -->
+  <footer>
+    <table>
+      <tr>
+        <td></td>
+        <td>2020 cursoprogramacion.com</td>
+        <td>
+          <ul>
+            <li><a href="">Ejercicios</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="">Codigo</a></li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><a href="">Paginas</a></li>
+            <li><a href="">Juegos</a></li>
+            <li><a href="">Contacto</a></li>
+          </ul>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </footer>
+  <!-- Footer END -->
+
+  <script>
+    var varkm;
+    var varm;
+    var varcm;
+    var varmm;
+    var editando;
+
+    function limpiarInputs(input) {
+      editando = input;
+      document.getElementById('km').value='';
+      document.getElementById('m').value='';
+      document.getElementById('cm').value='';
+      document.getElementById('mm').value='';
+    }
+
+    function calcular() {
+      varkm = parseFloat(document.getElementById('km').value);
+      varm = parseFloat(document.getElementById('m').value);
+      varcm = parseFloat(document.getElementById('cm').value);
+      varmm = parseFloat(document.getElementById('mm').value);
+      console.log(varkm, varm, varcm, varmm);
+      if(editando == 'km') {
+        document.getElementById('m').value=varkm *1000;
+        document.getElementById('cm').value=varkm *100000;
+        document.getElementById('mm').value=varkm *1000000;
+      } else if(editando == 'm') {
+        document.getElementById('km').value=varm / 1000;
+        document.getElementById('cm').value=varm *100;
+        document.getElementById('mm').value=varm *1000;
+    } else if(editando == 'cm') {
+        document.getElementById('km').value=varcm / 100000;
+        document.getElementById('m').value=varcm/100;
+        document.getElementById('mm').value=varcm *10
+      } if(editando == 'mm') {
+        document.getElementById('km').value= varmm /1000000;
+        document.getElementById('cm').value= varmm/10;
+       document.getElementById('m').value= varmm/1000;
+      }
+    }
+  </script>
+
+</body>
+
+</html>
