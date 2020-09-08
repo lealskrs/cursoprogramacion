@@ -144,20 +144,20 @@
 
     </style>
 
-    </head>
+</head>
 
-    <body>
-      
-      <article>
- 
-
-    <h1>Kiosco Los Hermanos</h1>
+<body>
+    
+    <article>
+        
+        
+        <h1>Kiosco Los Hermanos</h1>
         <h2>Productos</h2>
-
-
+        
+        
         <div id="productos"></div>
-
-
+        
+        
         <div id="div-agregar-producto">
             <h3>Nuevo Producto</h3>
             <span>Nombre Producto </span><input id="inputNombre" type="text" value="" placeholder="Escriba el Nombre..." /><br>
@@ -166,10 +166,11 @@
             <span>Precio de Venta </span><input onchange="cambioPrecio()" id="inputPrecioVenta" type="number" value="15" /><br>
             <span>% de Ganancia: </span><input onchange="cambioGanancia()" id="porcentajeGanancia" type="number" value="50"/><br>
             <span>Imagen Producto </span><input id="inputImagen" type="text" value="" placeholder="Escriba la url..." /><br>
+            <span>Descripcion Producto </span><textarea id="inputDescripcion" placeholder="Escriba aqui su mensaje"></textarea>
+            
             <button onclick="agregarProducto()">Agregar Producto</button>
         </div>
-
-
+        
         <div id="div-editar-producto">
             <h3>Editar Producto</h3>
             <div>
@@ -201,6 +202,7 @@
             var precioCompraProductos = [];
             var precioVentaProductos = [];
             var imagenProductos = [];
+            var descripcionProductos=[];
 
             function comprarProductos(i) {
                 if (dineroTotal >= precioCompraProductos[i]) {
@@ -228,6 +230,8 @@
                     cantidadProductos.splice(i, 1);
                     precioCompraProductos.splice(i, 1);
                     precioVentaProductos.splice(i, 1);
+                    imagenProductos.splice(i, 1);
+                    descripcionProductos.splice(i, 1);
 
                     dibujarProductos();
                     alert(`Se borro el producto ${productoABorrar}`)
@@ -245,6 +249,7 @@
                     const precioCompra = precioCompraProductos[i];
                     const precioVenta = precioVentaProductos[i];
                     const imagen = imagenProductos[i];
+                    const descripcion = descripcionProductos[i];
                     
                     document.getElementById("productos").innerHTML += `
                     <div class="clase-producto">
@@ -261,8 +266,11 @@
                                         <p>Cant: <span>${cantidad}</span> unidades</p>
                                         <p>Precio Compra: $<span>${precioCompra}</span></p>
                                         <p>Precio Venta: $<span>${precioVenta}</span></p>
-                                        <button onclick="comprarProductos(${i})">Comprar ${nombre}</button>
-                                        <button onclick="venderProductos(${i})">Vender ${nombre}</button>
+                                        <p>Descripcion: <span>${descripcion}</span></p>
+
+                                        <button onclick="comprarProductos(${i})">Comprar</button>
+                                        <button onclick="venderProductos(${i})">Vender</button>
+
                                         <button class="borrar" onclick="eliminarProducto(${i})">X</button>
                                     </div>
                                 </td>
@@ -291,12 +299,14 @@
                     const precioCompra = parseInt(document.getElementById("inputPrecioCompra").value)
                     const precioVenta = parseInt(document.getElementById("inputPrecioVenta").value)
                     const imagen = document.getElementById("inputImagen").value
-
+                    const descripcion= document.getElementById("inputDescripcion").value
                     nombresProductos.push(nombre);
                     cantidadProductos.push(cantidad);
                     precioCompraProductos.push(precioCompra);
                     precioVentaProductos.push(precioVenta);
                     imagenProductos.push(imagen);
+                    descripcionProductos.push(descripcion);
+
 
                     dibujarProductos();
                 } else {
@@ -343,6 +353,7 @@
                 localStorage.setItem("precioVentaProductos", JSON.stringify(precioVentaProductos));
                 localStorage.setItem("dineroTotal", JSON.stringify(dineroTotal));
                 localStorage.setItem("imagenProductos", JSON.stringify(imagenProductos));
+                localStorage.setItem("descripcionProductos", JSON.stringify(descripcionProductos));
             }
 
             function cargar() {
@@ -351,6 +362,8 @@
                 precioCompraProductos = JSON.parse(localStorage.getItem("precioCompraProductos")) || [];
                 precioVentaProductos = JSON.parse(localStorage.getItem("precioVentaProductos")) || [];
                 imagenProductos = JSON.parse(localStorage.getItem("imagenProductos")) || [];
+                descripcionProductos =JSON.parse(localStorage.getItem("descripcionProductos")) || [];
+                
                 if (localStorage.getItem("dineroTotal")) {
                     dineroTotal = JSON.parse(localStorage.getItem("dineroTotal"));
                 }
