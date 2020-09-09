@@ -10,12 +10,13 @@
 
     <style>
         .clase-producto, #div-editar-producto, #div-agregar-producto {
+            position: relative;
             background-color: white;
             border-radius: 10px;
             padding: 20px;
             font-size: 18px;
             font-weight: bold;
-            width: 60%;
+            width: 600px;
             margin-bottom: 30px;
             margin-left: 20%
         }
@@ -114,32 +115,50 @@
         }
         #productos span {
             color: red;
-            font-weight: bold;
         }
         .borrar {
-            background-color: #f33;
-            color: white;
+            font-size: 30px;
+            right: 10px;
+            position: absolute;
+            color: #f33;
             width: 100px;
             width: 62px;
             border-radius: 50%;
+            top: 10px;
+            background: none;
+            font-weight: initial;
         }
 
 
         button {
-            border-radius: 20px;
-            height: 40px;
-            background:rgb(66, 139, 161);
+            padding: 20px 40px;
+            text-transform: uppercase;
+            border-radius: 10px;
+            background: #fc4247;
             outline: none;
-            border:none;
-            font-size:18px;
-            color:white;
+            border: none;
+            font-size: 15px;
+            color: white;
             font-family: sans-serif;
-            padding-left: 15px;
-            padding-right: 15px;
+            font-weight: bold;
         }
 
         #productos img {
             width: 200px;
+        }
+        .div-precio-grande {
+            position: relative;
+        }
+        .signo-grande {
+            font-weight: initial;
+            font-size: 22px;
+            position: absolute;
+            top: 36px;
+        }
+        .precio-grande {
+            font-weight: initial;
+            font-size: 80px;
+            margin-left: 17px;
         }
 
     </style>
@@ -181,6 +200,8 @@
             <span>Cantidad Inicial </span><input id="editarCantidad" type="number" value="10" /><br>
             <span>Precio de Compra </span><input onchange="cambioGanancia()" id="editarPrecioCompra" type="number" value="10" /><br>
             <span>Precio de Venta </span><input onchange="cambioPrecio()" id="editarPrecioVenta" type="number" value="15" /><br>
+            <span>Imagen </span><input id="editarImagen" type="text" value="" placeholder="Ingrese URL de la Imagen" /><br>
+            <span>Descripcion Producto </span><textarea id="editarDescripcion" placeholder="Escriba aqui su mensaje"></textarea>
             <button onclick="editarProducto()">Editar Producto</button>
         </div>
         
@@ -197,41 +218,31 @@
 
             var dineroTotal = 200;
 
-            var nombresProductos = [];
-            var cantidadProductos = [];
-            var precioCompraProductos = [];
-            var precioVentaProductos = [];
-            var imagenProductos = [];
-            var descripcionProductos=[];
+            var productos = [];
 
             function comprarProductos(i) {
-                if (dineroTotal >= precioCompraProductos[i]) {
-                    cantidadProductos[i]++;
-                    dineroTotal -= precioCompraProductos[i];
+                if (dineroTotal >= productos[i].precioCompra) {
+                    productos[i].cantidad++;
+                    dineroTotal -= productos[i].precioCompra;
                     dibujarProductos();
                 } else {
-                    alert(`No hay dinero para comprar ${nombresProductos[i]}`);
+                    alert(`No hay dinero para comprar ${productos[i].nombre}`);
                 }
             }
             function venderProductos(i) {
 
-                if (cantidadProductos[i] >= 1) {
-                    cantidadProductos[i]--;
-                    dineroTotal += precioVentaProductos[i];
+                if (productos[i].cantidad >= 1) {
+                    productos[i].cantidad--;
+                    dineroTotal += productos[i].precioVenta;
                     dibujarProductos();
                 } else {
-                    alert(`No hay ${nombresProductos[i]} para vender`);
+                    alert(`No hay ${productos[i].nombre} para vender`);
                 }
             }
             function eliminarProducto(i) {
-                if (confirm(`Desea eliminar el producto ${nombresProductos[i]}?`)) {
-                    var productoABorrar = nombresProductos[i];
-                    nombresProductos.splice(i, 1);
-                    cantidadProductos.splice(i, 1);
-                    precioCompraProductos.splice(i, 1);
-                    precioVentaProductos.splice(i, 1);
-                    imagenProductos.splice(i, 1);
-                    descripcionProductos.splice(i, 1);
+                if (confirm(`Desea eliminar el producto ${productos[i].nombre}?`)) {
+                    var productoABorrar = productos[i].nombre;
+                    productos.splice(i, 1);
 
                     dibujarProductos();
                     alert(`Se borro el producto ${productoABorrar}`)
@@ -243,13 +254,8 @@
                 document.getElementById("dineroTotal").innerHTML = dineroTotal;
 
                 document.getElementById("productos").innerHTML = "";
-                for (let i = 0; i < nombresProductos.length; i++) {
-                    const nombre = nombresProductos[i];
-                    const cantidad = cantidadProductos[i];
-                    const precioCompra = precioCompraProductos[i];
-                    const precioVenta = precioVentaProductos[i];
-                    const imagen = imagenProductos[i];
-                    const descripcion = descripcionProductos[i];
+                for (let i = 0; i < productos.length; i++) {
+                    const producto = productos[i];
                     
                     document.getElementById("productos").innerHTML += `
                     <div class="clase-producto">
@@ -257,16 +263,19 @@
                             <tr>
                                 <td>
                                     <div>
-                                        <img src="${imagen || "https://www.newcasmont.com/11171-medium_default/merclin-quita-graffiti-250ml.jpg"}"/>
+                                        <img src="${producto.imagen || "https://www.newcasmont.com/11171-medium_default/merclin-quita-graffiti-250ml.jpg"}"/>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <h3>${nombre}</h3>
-                                        <p>Cant: <span>${cantidad}</span> unidades</p>
-                                        <p>Precio Compra: $<span>${precioCompra}</span></p>
-                                        <p>Precio Venta: $<span>${precioVenta}</span></p>
-                                        <p>Descripcion: <span>${descripcion}</span></p>
+                                        <h3>${producto.nombre}</h3>
+                                        <div class="div-precio-grande">
+                                            <span class="signo-grande">$</span>
+                                            <span class="precio-grande">${producto.precioVenta}</span>
+                                        </div>
+                                        <p>Precio Compra: $<span>${producto.precioCompra}</span></p>
+                                        <p>Cant: <span>${producto.cantidad}</span> unidades</p>
+                                        <p>Descripcion: <span>${producto.descripcion}</span></p>
 
                                         <button onclick="comprarProductos(${i})">Comprar</button>
                                         <button onclick="venderProductos(${i})">Vender</button>
@@ -281,10 +290,10 @@
                 }
                 
                 document.getElementById("productoAEditar").innerHTML = "";
-                for (let i = 0; i < nombresProductos.length; i++) {
-                    const nombre = nombresProductos[i];
+                for (let i = 0; i < productos.length; i++) {
+                    const producto = productos[i];
                     document.getElementById("productoAEditar").innerHTML += `
-                        <option value="${i}">${nombre}</option>
+                        <option value="${i}">${producto.nombre}</option>
                     `
                 }
                 guardar();
@@ -300,13 +309,16 @@
                     const precioVenta = parseInt(document.getElementById("inputPrecioVenta").value)
                     const imagen = document.getElementById("inputImagen").value
                     const descripcion= document.getElementById("inputDescripcion").value
-                    nombresProductos.push(nombre);
-                    cantidadProductos.push(cantidad);
-                    precioCompraProductos.push(precioCompra);
-                    precioVentaProductos.push(precioVenta);
-                    imagenProductos.push(imagen);
-                    descripcionProductos.push(descripcion);
 
+                    const producto = {
+                        nombre: nombre,
+                        cantidad: cantidad,
+                        precioCompra: precioCompra,
+                        precioVenta: precioVenta,
+                        imagen: imagen,
+                        descripcion: descripcion
+                    };
+                    productos.push(producto);
 
                     dibujarProductos();
                 } else {
@@ -339,30 +351,26 @@
                 const cantidad = parseInt(document.getElementById("editarCantidad").value);
                 const precioCompra = parseInt(document.getElementById("editarPrecioCompra").value)
                 const precioVenta = parseInt(document.getElementById("editarPrecioVenta").value)
+                const imagen = document.getElementById("editarImagen").value
+                const descripcion = document.getElementById("editarDescripcion").value
                 
-                cantidadProductos[i] = cantidad;
-                precioCompraProductos[i] = precioCompra;
-                precioVentaProductos[i] = precioVenta;
+                productos[i].cantidad = cantidad;
+                productos[i].precioCompra = precioCompra;
+                productos[i].precioVenta = precioVenta;
+                if (imagen) {
+                    productos[i].imagen = imagen;
+                }
+                productos[i].descripcion = descripcion;
                 dibujarProductos();
             }
 
             function guardar() {
-                localStorage.setItem("nombresProductos", JSON.stringify(nombresProductos));
-                localStorage.setItem("cantidadProductos", JSON.stringify(cantidadProductos));
-                localStorage.setItem("precioCompraProductos", JSON.stringify(precioCompraProductos));
-                localStorage.setItem("precioVentaProductos", JSON.stringify(precioVentaProductos));
+                localStorage.setItem("productos", JSON.stringify(productos));
                 localStorage.setItem("dineroTotal", JSON.stringify(dineroTotal));
-                localStorage.setItem("imagenProductos", JSON.stringify(imagenProductos));
-                localStorage.setItem("descripcionProductos", JSON.stringify(descripcionProductos));
             }
 
             function cargar() {
-                nombresProductos = JSON.parse(localStorage.getItem("nombresProductos")) || [];
-                cantidadProductos = JSON.parse(localStorage.getItem("cantidadProductos")) || [];
-                precioCompraProductos = JSON.parse(localStorage.getItem("precioCompraProductos")) || [];
-                precioVentaProductos = JSON.parse(localStorage.getItem("precioVentaProductos")) || [];
-                imagenProductos = JSON.parse(localStorage.getItem("imagenProductos")) || [];
-                descripcionProductos =JSON.parse(localStorage.getItem("descripcionProductos")) || [];
+                productos = JSON.parse(localStorage.getItem("productos")) || [];
                 
                 if (localStorage.getItem("dineroTotal")) {
                     dineroTotal = JSON.parse(localStorage.getItem("dineroTotal"));
