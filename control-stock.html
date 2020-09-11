@@ -9,7 +9,7 @@
 
 
     <style>
-        .clase-producto, #div-editar-producto, #div-agregar-producto {
+        .clase-producto {
             position: relative;
             background-color: white;
             border-radius: 10px;
@@ -17,8 +17,18 @@
             font-size: 18px;
             font-weight: bold;
             width: 600px;
+            margin: 10px;
+        }
+        #div-editar-producto, #div-agregar-producto {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 600px;
             margin-bottom: 30px;
-            margin-left: 20%
+            margin-left: 10px;
+            margin-right: 10px;
         }
       span.fas {
         color: white;
@@ -96,6 +106,15 @@
           width: 85%;
         }
       }
+
+      #productos, #formularios {
+          margin-top: 40px;
+          margin-bottom: 40px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
     
 
     
@@ -105,7 +124,7 @@
 
 
       body {
-            padding: 200px;
+            padding: 50px;
             font-family: sans-serif;
             color: #335566;
         }
@@ -176,35 +195,35 @@
         
         <div id="productos"></div>
         
-        
-        <div id="div-agregar-producto">
-            <h3>Nuevo Producto</h3>
-            <span>Nombre Producto </span><input id="inputNombre" type="text" value="" placeholder="Escriba el Nombre..." /><br>
-            <span>Cantidad Inicial </span><input id="inputCantidad" type="number" value="10" /><br>
-            <span>Precio de Compra </span><input onchange="cambioGanancia()" id="inputPrecioCompra" type="number" value="10" /><br>
-            <span>Precio de Venta </span><input onchange="cambioPrecio()" id="inputPrecioVenta" type="number" value="15" /><br>
-            <span>% de Ganancia: </span><input onchange="cambioGanancia()" id="porcentajeGanancia" type="number" value="50"/><br>
-            <span>Imagen Producto </span><input id="inputImagen" type="text" value="" placeholder="Escriba la url..." /><br>
-            <span>Descripcion Producto </span><textarea id="inputDescripcion" placeholder="Escriba aqui su mensaje"></textarea>
-            
-            <button onclick="agregarProducto()">Agregar Producto</button>
-        </div>
-        
-        <div id="div-editar-producto">
-            <h3>Editar Producto</h3>
-            <div>
-                <span>Nombre Producto </span><select id="productoAEditar" onchange="seleccionarProductoAEditar()">
-
-                </select>
+        <div id="formularios">
+            <div id="div-agregar-producto">
+                <h3>Nuevo Producto</h3>
+                <span>Nombre Producto </span><input id="inputNombre" type="text" value="" placeholder="Escriba el Nombre..." /><br>
+                <span>Cantidad Inicial </span><input id="inputCantidad" type="number" value="10" /><br>
+                <span>Precio de Compra </span><input onchange="cambioGanancia()" id="inputPrecioCompra" type="number" value="10" /><br>
+                <span>Precio de Venta </span><input onchange="cambioPrecio()" id="inputPrecioVenta" type="number" value="15" /><br>
+                <span>% de Ganancia: </span><input onchange="cambioGanancia()" id="porcentajeGanancia" type="number" value="50"/><br>
+                <span>Imagen Producto </span><input id="inputImagen" type="text" value="" placeholder="Escriba la url..." /><br>
+                <span>Descripcion Producto </span><textarea id="inputDescripcion" placeholder="Escriba aqui su mensaje"></textarea>
+                
+                <button onclick="agregarProducto()">Agregar Producto</button>
             </div>
-            <span>Cantidad Inicial </span><input id="editarCantidad" type="number" value="10" /><br>
-            <span>Precio de Compra </span><input onchange="cambioGanancia()" id="editarPrecioCompra" type="number" value="10" /><br>
-            <span>Precio de Venta </span><input onchange="cambioPrecio()" id="editarPrecioVenta" type="number" value="15" /><br>
-            <span>Imagen </span><input id="editarImagen" type="text" value="" placeholder="Ingrese URL de la Imagen" /><br>
-            <span>Descripcion Producto </span><textarea id="editarDescripcion" placeholder="Escriba aqui su mensaje"></textarea>
-            <button onclick="editarProducto()">Editar Producto</button>
+            
+            <div id="div-editar-producto">
+                <h3>Editar Producto</h3>
+                <div>
+                    <span>Nombre Producto </span><select id="productoAEditar" onchange="seleccionarProductoAEditar()">
+
+                    </select>
+                </div>
+                <span>Cantidad Inicial </span><input id="editarCantidad" type="number" value="10" /><br>
+                <span>Precio de Compra </span><input onchange="cambioGanancia()" id="editarPrecioCompra" type="number" value="10" /><br>
+                <span>Precio de Venta </span><input onchange="cambioPrecio()" id="editarPrecioVenta" type="number" value="15" /><br>
+                <span>Imagen </span><input id="editarImagen" type="text" value="" placeholder="Ingrese URL de la Imagen" /><br>
+                <span>Descripcion Producto </span><textarea id="editarDescripcion" placeholder="Escriba aqui su mensaje"></textarea>
+                <button onclick="editarProducto()">Editar Producto</button>
+            </div>
         </div>
-        
 
 
 
