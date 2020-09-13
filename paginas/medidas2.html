@@ -3,9 +3,9 @@
 
 <head>
 
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <title>Convertidor de Temperaturas</title>
 
     <style>
@@ -19,7 +19,7 @@
         body {
       margin: 0;
       padding: 0;
-      background-image:url("imagenes/fondologin.png") ;
+      background-image:url("../imagenes/fondologin.png") ;
       background-repeat: no-repeat;
       background-position: center;
       background-position: top;
@@ -104,14 +104,14 @@
 
   <!-- Header START -->
   <header>
-    <img src="imagenes/Logo.png">
+    <img src="../imagenes/Logo.png">
     <nav>
       <ul>
-        <li><a href="videos.html">Videos</a> </li>
-        <li><a href="juegos.html">Juegos</a> </li>
+        <li><a href="../videos.html">Videos</a> </li>
+        <li><a href="../juegos.html">Juegos</a> </li>
         <li><a href="">Codigo</a></li>
-        <li><a href="form-contacto.html">Contactenos</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="../form-contacto.html">Contactenos</a></li>
+        <li><a href="../login.html">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -137,6 +137,10 @@
            
             <label for="Password">Milimetros</label>
             <input onclick="limpiarInputs('mm')" id="mm" type="number" placeholder="Ingrese Milimetros">
+
+            <label for="Password">Pulgadas</label>
+            <input onclick="limpiarInputs('in')" id="in" type="number" placeholder="Ingrese Pugadas">
+
         <input type="submit" onclick="calcular()" value="Calcular">
   
            
@@ -155,7 +159,7 @@
         <td>
           <ul>
             <li><a href="">Ejercicios</a></li>
-            <li><a href="videos.html">Videos</a></li>
+            <li><a href="../videos.html">Videos</a></li>
             <li><a href="">Codigo</a></li>
           </ul>
         </td>
@@ -177,6 +181,7 @@
     var varm;
     var varcm;
     var varmm;
+    var varin;
     var editando;
 
     function limpiarInputs(input) {
@@ -185,30 +190,40 @@
       document.getElementById('m').value='';
       document.getElementById('cm').value='';
       document.getElementById('mm').value='';
+      document.getElementById('in').value='';
     }
-
     function calcular() {
       varkm = parseFloat(document.getElementById('km').value);
       varm = parseFloat(document.getElementById('m').value);
       varcm = parseFloat(document.getElementById('cm').value);
       varmm = parseFloat(document.getElementById('mm').value);
-      console.log(varkm, varm, varcm, varmm);
+      varin = parseFloat(document.getElementById('in').value);
+      console.log(varkm, varm, varcm, varmm,varin);
       if(editando == 'km') {
         document.getElementById('m').value=varkm *1000;
         document.getElementById('cm').value=varkm *100000;
         document.getElementById('mm').value=varkm *1000000;
+        document.getElementById('in').value=varkm
       } else if(editando == 'm') {
         document.getElementById('km').value=varm / 1000;
         document.getElementById('cm').value=varm *100;
         document.getElementById('mm').value=varm *1000;
+        document.getElementById('in').value=varm
     } else if(editando == 'cm') {
         document.getElementById('km').value=varcm / 100000;
         document.getElementById('m').value=varcm/100;
-        document.getElementById('mm').value=varcm *10
+        document.getElementById('mm').value=varcm *10;
+        document.getElementById('in').value=varcm 
       } if(editando == 'mm') {
         document.getElementById('km').value= varmm /1000000;
         document.getElementById('cm').value= varmm/10;
        document.getElementById('m').value= varmm/1000;
+       document.getElementById('in').value= varmm;
+      }else if(editando == 'in'){
+        document.getElementById('km').value=varin ;
+        document.getElementById('m').value=varin *1 /39.37;
+        document.getElementById('cm').value=varin ;
+        document.getElementById('mm').value=varin;
       }
     }
   </script>

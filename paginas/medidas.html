@@ -3,9 +3,9 @@
 
 <head>
 
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <title>Convertidor de Temperaturas</title>
 
     <style>
@@ -19,7 +19,7 @@
         body {
       margin: 0;
       padding: 0;
-      background-image:url("imagenes/fondologin.png") ;
+      background-image:url("../imagenes/fondologin.png") ;
       background-repeat: no-repeat;
       background-position: center;
       background-position: top;
@@ -29,7 +29,7 @@
   }
  .login-box {
      width: 320px;
-     height: 420px;
+     height: 460px;
      background:black;
      color:white;
      top: 50%;
@@ -104,14 +104,14 @@
 
   <!-- Header START -->
   <header>
-    <img src="imagenes/Logo.png">
+    <img src="../imagenes/Logo.png">
     <nav>
       <ul>
-        <li><a href="videos.html">Videos</a> </li>
-        <li><a href="juegos.html">Juegos</a> </li>
+        <li><a href="../videos.html">Videos</a> </li>
+        <li><a href="../juegos.html">Juegos</a> </li>
         <li><a href="">Codigo</a></li>
-        <li><a href="form-contacto.html">Contactenos</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="../form-contacto.html">Contactenos</a></li>
+        <li><a href="../login.html">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -133,7 +133,13 @@
             <label for="Password">Milimetros</label>
             <input oninput="varm = this.value / 1000; calcular()" id="mm" type="number" placeholder="Ingrese Milimetros">
 
-        </div>
+            <label for="Password">Pulgadas</label>
+            <input oninput="varm = this.value / 1000; calcular()" id="in" type="number" placeholder="Ingrese Pulgadas">
+
+            <label for="Password">Pies</label>
+            <input oninput="varm = this.value / 1000; calcular()" id="ft" type="number" placeholder="Ingrese Pies">
+        
+          </div>
 
     </div>
 
@@ -169,7 +175,9 @@
         document.getElementById('km').value=varm / 1000;
         document.getElementById('cm').value=varm *100;
         document.getElementById('mm').value=varm *1000;
-        document.getElementById('m').value=varm;
+        document.getElementById('m').value=varm ;
+        document.getElementById('in').value=varm *39.37 /1;
+        document.getElementById('ft').value=varm *3.28 /1;
     }
   </script>
 
