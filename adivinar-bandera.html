@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta name="viewport" content="width=device-width, user-scalable=no,
+       initial-scale=1.0, maximum-scale=1.0, minimun-scLE=1.O">
+    
+   
+    <title>Prueba2</title>
+  
+
+
+
+    <style>
+      
+      *{
+             margin:10px;
+             padding:5px;
+             box-sizing: border-box;
+}
+.contenedor{
+    background-image: url(fondologin.png);
+    display: flex;
+    flex-flow:column nowrap;
+    
+    }
+
+
+
+   .titulo{
+        background:rgb(14, 14, 134);
+        display: flex;
+       
+        
+       
+    }
+        .titulo h1{
+            display: flex;
+         
+            color:white;
+        }
+
+  
+
+    .lista-paises {
+      
+        font-size:30px;
+        color:black;
+        display: flex;
+
+        
+        
+
+        
+}
+        .lista-paises ul button{
+            font-size:30px;
+            background:rgb(14, 14, 134);
+            color:white;
+            display: flex;
+          margin: 10px;
+            
+        }
+       
+        
+        .imgbandera{
+           padding: 20px;
+           margin-bottom: 30px;
+           
+        }
+        #bandera {
+           width: 35vw;
+
+        }
+   
+        
+         
+        
+
+    
+        
+         
+
+        
+      
+
+    
+   
+
+     
+
+    </style>
+
+        <script src="json.js" charset="UTF-8"></script>
+    </head>
+
+    <body>
+        
+            
+         <div class=contenedor>
+                 
+               
+             
+                
+                 <div   class="titulo"><h1>Elige de que pais es la bandera</div>
+                    
+                
+                <div class="lista-paises" >
+
+                   <ul>
+                    <li><button id="boton0" onclick="verificarRespuesta(0)"></button></li>
+                    <li><button id="boton1" onclick="verificarRespuesta(1)"></button></li>
+                    <li><button id="boton2" onclick="verificarRespuesta(2)"></button></li>
+                    <li><button id="boton3" onclick="verificarRespuesta(3)"></button></li>
+                   </ul>
+                 
+                 <div class="imgbandera"><img id="bandera" src="bandera.png"></div>
+         </div>
+
+
+            
+            
+
+        <script>
+  
+            var opciones = [
+                paises[parseInt(Math.random()*paises.length)],
+                paises[parseInt(Math.random()*paises.length)],
+                paises[parseInt(Math.random()*paises.length)],
+                paises[parseInt(Math.random()*paises.length)],
+            ];
+            var opcionCorrecta = parseInt(Math.random()*opciones.length);
+
+            document.getElementById("bandera").src=opciones[opcionCorrecta].flag;
+            for (var i=0; i < opciones.length; i++) {
+
+                var nombre = opciones[i].translations.es || opciones[i].name;
+                document.getElementById(`boton${i}`).innerHTML += nombre;
+
+            }
+
+            function verificarRespuesta(opcion) {
+                if (opcion == opcionCorrecta) {
+                    alert("Correcto");
+                } else {
+                    alert("Incorrecto");
+                }
+                window.location.reload();
+            }
+
+        </script>
+                      
+      
+      
+     
+       
+    
+
+     
+        
+     
+       
+
+      
+
+  
+
+
+
+     
+    </body>
+
+    </html>
