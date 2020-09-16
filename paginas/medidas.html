@@ -29,7 +29,6 @@
   }
  .login-box {
      width: 320px;
-     height: 460px;
      background:black;
      color:white;
      top: 50%;
@@ -119,27 +118,7 @@
 
     <div class= "login-box">
         <h1>Unidades de Longitud </h1>
-        <div>
-            
-            <label for="Usuario">Kilometros</label>
-            <input oninput="varm = this.value * 1000; calcular()" id="km" type="number" placeholder="Ingrese Kilometros">
-        
-            <label for="Password">Metros</label>
-            <input oninput="varm = this.value; calcular()" id="m" type="number" placeholder="Ingrese Metros">
-          
-            <label for="Password">Centimetros</label>
-            <input oninput="varm = this.value / 100; calcular()" id="cm" type="number" placeholder="Ingrese Centimetros">
-           
-            <label for="Password">Milimetros</label>
-            <input oninput="varm = this.value / 1000; calcular()" id="mm" type="number" placeholder="Ingrese Milimetros">
-
-            <label for="Password">Pulgadas</label>
-            <input oninput="varm = this.value / 1000; calcular()" id="in" type="number" placeholder="Ingrese Pulgadas">
-
-            <label for="Password">Pies</label>
-            <input oninput="varm = this.value / 1000; calcular()" id="ft" type="number" placeholder="Ingrese Pies">
-        
-          </div>
+        <div id="medidas"></div>
 
     </div>
 
@@ -172,13 +151,34 @@
   <script>
     var varm;
     function calcular() {
-        document.getElementById('km').value=varm / 1000;
-        document.getElementById('cm').value=varm *100;
-        document.getElementById('mm').value=varm *1000;
-        document.getElementById('m').value=varm ;
-        document.getElementById('in').value=varm *39.37 /1;
-        document.getElementById('ft').value=varm *3.28 /1;
+      for (const medida of medidas) {
+        if (medida.operacion == "*") {
+          document.getElementById(medida.id).value=varm / medida.valor; 
+        } else {
+          document.getElementById(medida.id).value=varm * medida.valor; 
+        }
+      }
     }
+    
+    var medidas = [
+      { nombre: "Kilometros", valor: 1000, operacion: "*", id: "km" },
+      { nombre: "Metros", valor: 1, operacion: "*", id: "m" },
+      { nombre: "Centimetros", valor: 100, operacion: "/", id: "cm" },
+      { nombre: "Milimetros", valor: 1000, operacion: "/", id: "mm" },
+      { nombre: "Pulgadas", valor: 39.37, operacion: "/", id: "in" },
+      { nombre: "Pies", valor: 3.281, operacion: "/", id: "ft" },
+      { nombre: "Yardas", valor: 1.094, operacion: "/", id: "yd" },
+      { nombre: "Millas", valor: 1609, operacion: "*", id: "ml" },
+    ];
+    var html = "";
+    for (const medida of medidas) {
+      html += `
+      <label>${medida.nombre}</label>
+      <input oninput="varm = this.value ${medida.operacion} ${medida.valor}; calcular()" id="${medida.id}" type="number" placeholder="Ingrese ${medida.nombre}">
+      `;
+    }
+    document.getElementById("medidas").innerHTML = html;
+
   </script>
 
 </body>
