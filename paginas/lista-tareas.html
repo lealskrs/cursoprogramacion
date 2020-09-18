@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .tarea {
+            font-size: 20px;
+            font-weight:bold;
+            margin-top: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .tarea i {
+            position: absolute;
+            left: -24px;
+            top: 3px;
+        }
+        .subtarea {
+            color: #666;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .boton {
+            color: #999;
+            cursor: pointer;
+        }
+        .boton i {
+            color: red;
+        }
+        #contenido {
+            width: 50%;
+            padding-left: 20%;
+            font-size: 16px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/0577fe47dc.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="contenido" >
+
+</div>
+ 
+<script charset="UTF-8">
+    var tareas = JSON.parse(`[
+  {
+    "nota": "Preparar archivo del cliente",
+    "icono": null,
+    "subtareas": [
+      {
+        "nota": "Añadir los objetivos del cliente"
+      },
+      {
+        "nota": "Lista de servicios para ofrecerle al cliente"
+      },
+      {
+        "nota": "Crear un plan detallado del proyecto"
+      },
+      {
+        "nota": "Documentos de bienvenida para el cliente"
+      }
+    ]
+  },
+  {
+    "nota": "Enviar email de bienvenida al cliente",
+    "icono": null,
+    "subtareas": [
+      {
+        "nota": "Compartir documentos de bienvenida con el cliente"
+      },
+      {
+        "nota": "Compartir un resumen del plan del proyecto"
+      },
+      {
+        "nota": "Programar una llamada preliminar"
+      }
+    ]
+  },
+  {
+    "nota": "Primera llamada",
+    "icono": "phone",
+    "subtareas": [
+      {
+        "nota": "Confirmar detalles en el archivo del cliente (objetivos, calendario, tarifas)"
+      },
+      {
+        "nota": "Confirmar primer plazo con el cliente"
+      },
+      {
+        "nota": "Preguntar si hay dudas o inquietudes con respecto al plan"
+      }
+    ]
+  }
+]`);
+
+var html = `
+<h2>Gestion de clientes</h2>
+<p class="boton"><i class="fas fa-plus"></i> Añadir tarea</p>
+<p class="boton"><i class="fas fa-plus"></i> Añadir seccion</p>
+`;
+for (const tarea of tareas) {
+    html += `
+    <p class="tarea"><i class="fas fa-chevron-down"></i> ${tarea.nota} ${tarea.icono ? `<span class="fas fa-${tarea.icono}"></span>` : ``}</p>
+    `;
+    for (const subtarea of tarea.subtareas) {
+        html += `
+        <p class="subtarea"><i class="far fa-circle"></i> ${subtarea.nota}</p>
+        `;
+    }
+    html += `
+    <p class="boton"><i class="fas fa-plus"></i> Añadir tarea</p>
+    `;
+}
+document.getElementById("contenido").innerHTML = html;
+</script>
+
+</body>
+
+
+
+
+
+</html>
+
+
